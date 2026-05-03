@@ -123,6 +123,7 @@ while(1)
         //insercion
         if(temp->left == NULL)
         {
+            newNode->parent= temp;
             temp->left= newNode;
             tree->current= newNode;
             break;
@@ -137,6 +138,7 @@ while(1)
     {
         if(temp->right == NULL)
         {
+            newNode->parent= temp;
             temp->right= newNode;
             tree->current= newNode;
             break;
