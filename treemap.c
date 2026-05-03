@@ -54,7 +54,39 @@ TreeMap * createTreeMap(int (*lower_than) (void* key1, void* key2)) {
 // la cual busca el nodo con clave igual a key y retorna el Pair asociado al nodo. 
 // Si no se encuentra la clave retorna NULL. Recuerde hacer que el current apunte al nodo encontrado.
 
+//USAR FUNCIONES lowerthan y is_equal
 Pair * searchTreeMap(TreeMap * tree, void* key) {
+    //hacer que el current apunte al nodo encontrado!
+    //tenemos el arbol y la clave buscada
+
+
+    //ponernos en casos.. que pasa si el mapa/arbol esta vacio?
+    //mapa o raiz nula retorna null
+    if(tree == NULL || tree->root == NULL) return NULL;
+    TreeNode * temp = tree->root; //empezamos en la raiz!
+    while(temp != NULL)
+    {
+        //si son iguales
+        if(is_equal(tree,temp->pair->key,key) == 1)
+        {
+            //actualizar el current al par del temporal
+            tree->current= temp;
+            return temp->current->pair;
+        }
+        //si la buscada es menor, vamos a la izquierda
+        else if(tree->lowerthan(key,temp->pair->key) == 1)
+        {
+            temp= temp->left;
+        }
+        //si no, es porque es mayor, vamos a la derecha.
+        else
+        {
+            temp=temp->right;
+        }
+    }
+
+    
+    //no se encuentra la clave
     return NULL;
 }
 
