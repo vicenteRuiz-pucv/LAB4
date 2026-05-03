@@ -103,7 +103,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
 //paso uno! crear el nodo..    
 TreeNode * newNode= createTreeNode(key,value);
 TreeNode * temp= tree->root;    
-while(true)
+while(1)
 {
     //si la raiz esta vacia, insertamos el nodo ahi.
     if(tree->root == NULL)
