@@ -71,7 +71,7 @@ Pair * searchTreeMap(TreeMap * tree, void* key) {
         {
             //actualizar el current al par del temporal
             tree->current= temp;
-            return temp->current->pair;
+            return temp->pair;
         }
         //si la buscada es menor, vamos a la izquierda
         else if(tree->lowerthan(key,temp->pair->key) == 1)
