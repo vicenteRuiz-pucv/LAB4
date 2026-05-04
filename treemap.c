@@ -226,7 +226,7 @@ void removeNode(TreeMap * tree, TreeNode* node) {
         }
     }
     //2.ACTUALIZAMOS EL PARENT!(NODE= NODE->PARENT)
-    if(node->left == NULL || node->right == NULL)
+    else if(node->left == NULL || node->right == NULL)
     {
         //si el hijo de node esta a la izquierda
         if(node->left != NULL)
