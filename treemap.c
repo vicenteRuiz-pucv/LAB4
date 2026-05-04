@@ -226,7 +226,39 @@ void removeNode(TreeMap * tree, TreeNode* node) {
         }
     }
     //2.ACTUALIZAMOS EL PARENT!(NODE= NODE->PARENT)
-    //if()
+    if(node->left == NULL || node->right == NULL)
+    {
+        //si el hijo de node esta a la izquierda
+        if(node->left != NULL)
+        {
+            //si node esta a la izquierda de parent
+            if(parent->left == node)
+            {
+                parent->left= node->left;
+                free(node);
+            }
+            else
+            {
+                parent->right= node->left;
+                free(node);
+            }
+        }
+        //si el hijo de node esta a la derecha
+        else
+        {
+            //si node esta a la izquierda de parent
+            if(parent->left == node)
+            {
+                parent->left= node->right;
+                free(node);
+            }
+            else
+            {
+                parent->right= node->right;
+                free(node);
+            }
+        }
+    }
 
     
     //3.VAMOS A LA DERECHA Y OBTENEMOS EL MINIMO(FUNCION)
