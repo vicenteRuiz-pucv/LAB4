@@ -301,7 +301,13 @@ void eraseTreeMap(TreeMap * tree, void* key){
 // Recuerde actualizar este puntero.
 
 Pair * firstTreeMap(TreeMap * tree) {
-    return NULL;
+    //en el caso de un mapa normal deberiamos ir al maximo a la izquierda
+    TreeNode * temp = tree->root;
+    while(temp->left != NULL)
+    {
+        temp= temp->left;        
+    }
+    return temp->pair;
 }
 
 Pair * nextTreeMap(TreeMap * tree) {
