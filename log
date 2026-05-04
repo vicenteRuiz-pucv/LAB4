@@ -275,3 +275,18 @@ Mon May  4 02:33:50 AM UTC 2026:
  tests:  20|2
 total_score: 40/60
 5130296
+Mon May  4 03:15:07 AM UTC 2026: 
+ treemap.c | 18 +++++++++++++++++-
+ 1 file changed, 17 insertions(+), 1 deletion(-)
+Compilation failed
+In file included from test.c:4:
+treemap.c: In function ‘nextTreeMap’:
+treemap.c:315:29: error: ‘TreeMap’ has no member named ‘curret’; did you mean ‘current’?
+  315 |     TreeNode * newN = tree->curret;
+      |                             ^~~~~~
+      |                             current
+treemap.c:331:1: error: control reaches end of non-void function [-Werror=return-type]
+  331 | }
+      | ^
+cc1: all warnings being treated as errors
+50df1da
