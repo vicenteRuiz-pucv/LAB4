@@ -181,8 +181,11 @@ void removeNode(TreeMap * tree, TreeNode* node) {
     //tenemos un arbol y el nodo a eliminar..
     //1. ACCEDEMOS AL PARENT DE NODE Y ANULAMOS SU HIJO..
     //buscar el parent
-    TreeNode * temp= tree->root;
-    TreeNode * parent = NULL;
+    
+    
+    TreeNode * parent = node->parent;
+    
+    /*
     while(temp != NULL)
         {
             //si son iguales
@@ -211,19 +214,25 @@ void removeNode(TreeMap * tree, TreeNode* node) {
                 temp=temp->right;
             }
         }
+    */
     //CASO 1 !!
     if(node->left == NULL && node->right == NULL)
     {
-        if(parent->left == node)
+        if(parent == NULL)
+        {
+            tree->root = NULL;
+        }
+        else if(parent->left == node)
         {
             parent->left = NULL;
-            free(node);
+            
         }
         else
         {
             parent->right = NULL;
-            free(node); 
+            
         }
+        free(node);
     }
     //2.ACTUALIZAMOS EL PARENT!(NODE= NODE->PARENT)
     else if(node->left == NULL || node->right == NULL)
@@ -232,40 +241,44 @@ void removeNode(TreeMap * tree, TreeNode* node) {
         if(node->left != NULL)
         {
             //si node esta a la izquierda de parent
-            if(parent->left == node)
+            node->left->parent= parent;
+            if(parent == NULL)
+            {
+                tree->root= node->left;
+            }
+            else if(parent->left == node)
             {
                 parent->left= node->left;
-                node->left->parent= parent;
-                free(node);
             }
             else
             {
                 parent->right= node->left;
-                node->left->parent= parent;
-                free(node);
             }
+            free(node);
         }
         //si el hijo de node esta a la derecha
         else
         {
             //si node esta a la izquierda de parent
-            if(parent->left == node)
+            node->right->parent= parent;
+            if(parent == NULL)
+            {
+                tree->root= node->right;
+            }
+            else if(parent->left == node)
             {
                 parent->left= node->right;
-                node->right->parent= parent;
-                free(node);
             }
             else
             {
                 parent->right= node->right;
-                node->right->parent= parent;
-                free(node);
             }
+            free(node);
         }
     }
     else//tiene dos hijos!
     {
-        TreeNode * minimo= minimum(temp->right);
+        TreeNode * minimo= minimum(node->right);
         node->pair->key= minimo->pair->key;
         node->pair->value=minimo->pair->value;
         free(minimo);
