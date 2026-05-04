@@ -199,7 +199,7 @@ void removeNode(TreeMap * tree, TreeNode* node) {
                 parent= temp;
             }
             //si la buscada es menor, vamos a la izquierda
-            else if(tree->lower_than(key,temp->pair->key) == 1)
+            else if(tree->lower_than(node->key,temp->pair->key) == 1)
             {
                 temp= temp->left;
             }
