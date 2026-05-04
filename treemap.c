@@ -177,7 +177,57 @@ TreeNode * minimum(TreeNode * x){
 // Reemplace los datos (key,value) de node con los del nodo "minimum". Elimine el nodo minimum (para hacerlo puede usar la misma función removeNode).
 
 void removeNode(TreeMap * tree, TreeNode* node) {
+// 3 casos
+    //tenemos un arbol y el nodo a eliminar..
+    //1. ACCEDEMOS AL PARENT DE NODE Y ANULAMOS SU HIJO..
+    //buscar el parent
+    TreeNode * temp= tree->root;
+    TreeNode * parent = NULL;
+    while(temp != NULL)
+        {
+            //si son iguales
+            //si la clave de node esta en la izquierda
+            if(is_equal(tree,temp->left->pair->key,node->pair->key) == 1)
+            {
+                //actualizar el current al par del temporal
+                //tree->current= temp;
+                //return temp->pair;
+                parent = temp;
+            }
+            else if(is_equal(tree,temp->right->pair->key,node->pair->key) == 1)
+            {
+                parent= temp;
+            }
+            //si la buscada es menor, vamos a la izquierda
+            else if(tree->lower_than(key,temp->pair->key) == 1)
+            {
+                temp= temp->left;
+            }
+            //si no, es porque es mayor, vamos a la derecha.
+            else
+            {
+                temp=temp->right;
+            }
+        }
+    //CASO 1 !!
+    if(node->left == NULL && node->right == NULL)
+    {
+        if(parent->left == node)
+        {
+            parent->left = NULL;
+            free(node);
+        }
+        else
+        {
+            parent->right = NULL;
+            free(node);
+        }
+    }
+    //2.ACTUALIZAMOS EL PARENT!(NODE= NODE->PARENT)
+    
 
+    
+    //3.VAMOS A LA DERECHA Y OBTENEMOS EL MINIMO(FUNCION)
 }
 
 void eraseTreeMap(TreeMap * tree, void* key){
@@ -186,7 +236,6 @@ void eraseTreeMap(TreeMap * tree, void* key){
     if (searchTreeMap(tree, key) == NULL) return;
     TreeNode* node = tree->current;
     removeNode(tree, node);
-
 }
 
 // 6.- Implemente las funciones para recorrer la estructura: 
