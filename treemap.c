@@ -263,7 +263,13 @@ void removeNode(TreeMap * tree, TreeNode* node) {
             }
         }
     }
-
+    else//tiene dos hijos!
+    {
+        TreeNode * minimo= minimum(root->right);
+        node->key= minimo->key;
+        node->value=minimo->value;
+        removeNode(minimo);
+    }
     
     //3.VAMOS A LA DERECHA Y OBTENEMOS EL MINIMO(FUNCION)
 }
