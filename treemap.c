@@ -312,7 +312,7 @@ Pair * firstTreeMap(TreeMap * tree) {
 }
 
 Pair * nextTreeMap(TreeMap * tree) {
-    TreeNode * newN = tree->curret;
+    TreeNode * newN = tree->current;
 
     if(newN->right != NULL)
     {
