@@ -212,14 +212,14 @@ void removeNode(TreeMap * tree, TreeNode* node) {
     //CASO 1 !!
     if(node->pair->left == NULL && node->pair->right == NULL)
     {
-        if(parent->pair->left == node)
+        if(parent->left == node)
         {
-            parent->pair->left = NULL;
+            parent->left = NULL;
             //free(node);
         }
         else
         {
-            parent->pair->right = NULL;
+            parent->right = NULL;
             //free(node);
         }
     }
