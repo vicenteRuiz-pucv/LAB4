@@ -157,8 +157,15 @@ while(1)
 // Si x no tiene hijo izquierdo se retorna el mismo nodo.
 
 TreeNode * minimum(TreeNode * x){
-
-    return NULL;
+    //suponiendo que nos dejan en un subarbol solo debemos ir a la izquierda en un bucle while temp != null
+    //rompemos cuando el siguiente a la izquierda es null y retornamos ese nodo x
+    if(x->left == NULL) return x;
+    while(x != NULL)
+    {
+        if(x->left == NULL) break;
+         x= x->left;   
+    }
+    return x;
 }
 
 // 5.- Implemente la función void removeNode(TreeMap * tree, TreeNode* node). 
