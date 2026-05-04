@@ -266,8 +266,8 @@ void removeNode(TreeMap * tree, TreeNode* node) {
     else//tiene dos hijos!
     {
         TreeNode * minimo= minimum(tree->root->right);
-        node->key= minimo->key;
-        node->value=minimo->value;
+        node->pair->key= minimo->pair->key;
+        node->pair->value=minimo->pair->value;
         removeNode(minimo);
     }
     
