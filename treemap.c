@@ -268,7 +268,7 @@ void removeNode(TreeMap * tree, TreeNode* node) {
         TreeNode * minimo= minimum(tree->root->right);
         node->pair->key= minimo->pair->key;
         node->pair->value=minimo->pair->value;
-        removeNode(tree,minimo);
+        free(minimo);
     }
     
     //3.VAMOS A LA DERECHA Y OBTENEMOS EL MINIMO(FUNCION)
