@@ -193,10 +193,12 @@ void removeNode(TreeMap * tree, TreeNode* node) {
                 tree->current= temp;
                 //return temp->pair;
                 parent = temp;
+                break;
             }
             else if(is_equal(tree,temp->right->pair->key,node->pair->key) == 1)
             {
                 parent= temp;
+                break;
             }
             //si la buscada es menor, vamos a la izquierda
             else if(tree->lower_than(node->pair->key,temp->pair->key) == 1)
@@ -210,21 +212,21 @@ void removeNode(TreeMap * tree, TreeNode* node) {
             }
         }
     //CASO 1 !!
-    if(node->pair->left == NULL && node->pair->right == NULL)
+    if(node->left == NULL && node->right == NULL)
     {
         if(parent->left == node)
         {
             parent->left = NULL;
-            //free(node);
+            free(node);
         }
         else
         {
             parent->right = NULL;
-            //free(node);
+            free(node); 
         }
     }
     //2.ACTUALIZAMOS EL PARENT!(NODE= NODE->PARENT)
-    
+    //if()
 
     
     //3.VAMOS A LA DERECHA Y OBTENEMOS EL MINIMO(FUNCION)
