@@ -190,7 +190,7 @@ void removeNode(TreeMap * tree, TreeNode* node) {
             if(is_equal(tree,temp->left->pair->key,node->pair->key) == 1)
             {
                 //actualizar el current al par del temporal
-                //tree->current= temp;
+                tree->current= temp;
                 //return temp->pair;
                 parent = temp;
             }
@@ -199,7 +199,7 @@ void removeNode(TreeMap * tree, TreeNode* node) {
                 parent= temp;
             }
             //si la buscada es menor, vamos a la izquierda
-            else if(tree->lower_than(node->key,temp->pair->key) == 1)
+            else if(tree->lower_than(node->pair->key,temp->pair->key) == 1)
             {
                 temp= temp->left;
             }
@@ -210,17 +210,17 @@ void removeNode(TreeMap * tree, TreeNode* node) {
             }
         }
     //CASO 1 !!
-    if(node->left == NULL && node->right == NULL)
+    if(node->pair->left == NULL && node->pair->right == NULL)
     {
-        if(parent->left == node)
+        if(parent->pair->left == node)
         {
-            parent->left = NULL;
-            free(node);
+            parent->pair->left = NULL;
+            //free(node);
         }
         else
         {
-            parent->right = NULL;
-            free(node);
+            parent->pair->right = NULL;
+            //free(node);
         }
     }
     //2.ACTUALIZAMOS EL PARENT!(NODE= NODE->PARENT)
